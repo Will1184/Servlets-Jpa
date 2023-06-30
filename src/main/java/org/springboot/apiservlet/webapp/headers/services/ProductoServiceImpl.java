@@ -7,7 +7,9 @@ import org.springboot.apiservlet.webapp.headers.interceptors.TransactionalJpa;
 import org.springboot.apiservlet.webapp.headers.models.entity.Categoria;
 import org.springboot.apiservlet.webapp.headers.models.entity.Producto;
 import org.springboot.apiservlet.webapp.headers.repositories.CrudRepository;
+import org.springboot.apiservlet.webapp.headers.repositories.ProductoRepositoryJpaImpl;
 import org.springboot.apiservlet.webapp.headers.repositories.RepositoryJpa;
+import org.springboot.apiservlet.webapp.headers.repositories.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,9 +22,16 @@ public class ProductoServiceImpl implements ProductoService{
     @RepositoryJpa
     private CrudRepository<Producto> crudRepositoryJdbc;
 
+    private ProductoRepositoryJpaImpl productoRepositoryJpa;
     @Inject
     @RepositoryJpa
     private CrudRepository<Categoria> crudRepositoryCategoriaJdbc;
+
+    @Inject
+
+    public ProductoServiceImpl(@RepositoryJpa ProductoRepositoryJpaImpl productoRepositoryJpa) {
+        this.productoRepositoryJpa= productoRepositoryJpa;
+    }
 
     @Override
     public List<Producto> listar() {

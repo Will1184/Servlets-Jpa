@@ -7,6 +7,7 @@ import org.springboot.apiservlet.webapp.headers.models.entity.Categoria;
 
 import java.util.List;
 
+@RepositoryJpa
 @Repository
 public class CategoriaRepositoryJpaImpl implements CrudRepository<Categoria> {
 
